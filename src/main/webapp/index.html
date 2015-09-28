@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="MarketAdsApp">
+    <head>
+        <title>MarketAds</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>        
+	<link rel="stylesheet" type="text/css" href="style.css">        
+        <script src="client.js"></script>
+        <script>
+            function deleteItem(id) {
+                console.log("Delete pressed: " + id);
+            }
+        </script>    
+    </head>
+    <body>
+        <div ng-controller="MarketAdsController">
+            <div>
+                <form ng-submit="additem()">
+                    <h2>Add new item</h2>
+                    Enter Title:<input type="text" ng-model="newitem.title"/><br>
+                    Enter Description:<input type="text" ng-model="newitem.description"/><br>
+                    Enter Price:<input type="text" ng-model="newitem.price"/><br>
+                    Enter Email address:<input type="text" ng-model="newitem.email"/><br>
+                    Enter Telephone number:<input type="text" ng-model="newitem.tel"/><br>
+                <input type="submit" value="Add"/>     
+                </form>
+            </div>
+            <hr>
+            <div>
+                <form ng-submit="findbyid()">
+                    Enter id as a search term:
+                    <input type="text" ng-model="searchid"/>
+                    <input type="submit" value="Find"/>
+                    <p id="search_results"></p>
+                </form>
+            </div>
+            <hr>
+            <div>
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Thumbnail</th>
+                        <th>Email</th>
+                        <th>Telephone</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr ng-repeat="x in listitems">
+                        <td id="id_element">{{x.id}}</td>
+                        <td>{{x.title}}</td>
+                        <td>{{x.description}}</td>
+                        <td>{{x.priceCents}}</td>
+                        <td><img src="{{x.imageUrl}}" alt={{x.imageUrl}} style="width:256px"></td>
+                        <td><img src="{{x.thumbnailUrl}}" alt={{x.thumbnailUrl}} style="width:128px"></td>
+                        <td><a href="mailto:{{x.email}}">{{x.email}}</a></td>
+                        <td>{{x.phone}}</td>
+                        <td class="delete" onclick="deleteItem(document.getElementById('id_element').innerHTML)">&#9938;</td>
+                    </tr>
+                </table>                
+            </div>
+            <hr>
+        </div>
+    </body>
+</html>

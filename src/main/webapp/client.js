@@ -2,9 +2,9 @@ var app = angular.module('MarketAdsApp', []);
 
 app.controller('MarketAdsController', function($scope, $http) {
     $http.get("http://mepa-store-api.herokuapp.com/marketads")
-    .then(function successCallback(response) {
+    .success(function(response) {
         $scope.listitems = response;
-    }, function errorCallback(response) {
+    }).error(function() {
         console.log("Error in getting marketads!");
     });
 
@@ -13,9 +13,9 @@ app.controller('MarketAdsController', function($scope, $http) {
         $http({
             method: 'GET',
             url:url
-        }).then(function successCallback(response) {
-            $scope.listitems = data;
-        }, function errorCallback(response) {
+        }).success(function(response) {
+            $scope.listitems = response;
+        }).error(function(){
             console.log("MarketAdsController: Error in finding an item!");
         });
     };
@@ -31,9 +31,9 @@ app.controller('MarketAdsController', function($scope, $http) {
                 'tel': $scope.newitem.tel,
                 'id':0},
             headers: 'Content-type: application/json'
-        }).then(function successCallback(response) {
+        }).success(function() {
             console.log("MarketAdsController: success");
-        }, function errorCallback(response) {
+        }).error(function(){
             console.log("MarketAdsController: error");
         });
     };
@@ -42,9 +42,9 @@ app.controller('MarketAdsController', function($scope, $http) {
         $http({
             method: 'DELETE',
             url:'http://mepa-store-api.herokuapp.com/marketads/' + $scope.deleteid
-        }).then(function successCallback(response) {
+        }).success(function() {
             console.log("MarketAdsController: List item deleted");
-        }, function errorCallback(response) {
+        }).error(function(){
             console.log("MarketAdsController: Error in deleting an item!");
         });
     };
@@ -54,10 +54,10 @@ app.controller('MarketAdsController', function($scope, $http) {
         $http({
             method: 'GET',
             url: url
-        }).then(function successCallback(response) {
+        }).success(function(response) {
             console.log("MarketAdsController: Success!");
             $scope.listitems = response;
-        }, function errorCallback(response) {
+        }).error(function() {
             console.log("MarketAdsController: Error in getting response from " + url);
         });
     };

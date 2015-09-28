@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>        
-	<link rel="stylesheet" type="text/css" href="style.css">        
+	<link rel="stylesheet" type="text/css" href="style.css">
         <script src="client.js"></script>
         <script>
             function deleteItem(id) {
@@ -52,15 +52,15 @@
                         <th>Telephone</th>
                         <th>Delete</th>
                     </tr>
-                    <tr ng-repeat="x in listitems">
-                        <td id="id_element">{{x.id}}</td>
-                        <td>{{x.title}}</td>
-                        <td>{{x.description}}</td>
-                        <td>{{x.priceCents}}</td>
-                        <td><img src="{{x.imageUrl}}" alt={{x.imageUrl}} style="width:256px"></td>
-                        <td><img src="{{x.thumbnailUrl}}" alt={{x.thumbnailUrl}} style="width:128px"></td>
-                        <td><a href="mailto:{{x.email}}">{{x.email}}</a></td>
-                        <td>{{x.phone}}</td>
+                    <tr ng-repeat="item in listitems">
+                        <td id="id_element">{{item.id}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.priceCents}}</td>
+                        <td><img src="{{item.imageUrl}}" alt={{item.imageUrl}} style="width:256px"></td>
+                        <td><img src="{{item.thumbnailUrl}}" alt={{item.thumbnailUrl}} style="width:128px"></td>
+                        <td><a href="mailto:{{item.email}}">{{item.email}}</a></td>
+                        <td>{{item.phone}}</td>
                         <td class="delete" onclick="deleteItem(document.getElementById('id_element').innerHTML)">&#9938;</td>
                     </tr>
                 </table>                

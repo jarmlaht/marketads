@@ -28,7 +28,7 @@ public class MarketAdsController {
         return "failed!";
     }
     
-    @RequestMapping("rest/marketads/:{id}")
+    @RequestMapping("rest/marketads/delete/{id}")
     public @ResponseBody String deleteItem(@PathVariable("id") String id) {
         service.deleteItem(id);
         return "success!";
@@ -39,7 +39,7 @@ public class MarketAdsController {
         return service.listAll();
     }    
 
-    @RequestMapping("rest/marketads/:{id}")
+    @RequestMapping("rest/marketads/find/{id}")
     public @ResponseBody List<ListItem> findById(@PathVariable("id") String id) {
         return service.findById(id);
     }   
